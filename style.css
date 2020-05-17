@@ -1,0 +1,75 @@
+h1 {
+    background: #353936;
+    color: white;
+    height: 65px;
+    margin-bottom: 0;
+}
+
+.title{
+    position: relative;
+    top: 8px;
+}
+
+.jumbo {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+}
+
+.result {
+   border: solid 1px #e9ecef;
+   border-right: 0;
+   padding-left: 10px;
+   margin-top: 15px;
+}
+
+.forecast-div {
+    margin-top: 15px;
+ }
+
+ .left {
+     margin-right: 15px;
+     background: #e9ecef;
+     
+ }
+
+ .images {
+     display: block;
+ }
+
+ p {
+     font-size: 11px;
+ }
+
+ .icons {
+     background: rgb(214, 237, 253);
+     padding: 8px;
+     height: 20px;
+ }
+
+.city {
+     margin-top: 15px;
+ }
+
+ .hide {
+     display: none;
+ }
+
+ /* img {
+     height: 50px;
+     width: 50px;
+     border: none;
+ } */
+
+ .low {
+     background: green;
+ }
+
+ .medium {
+     background: rgb(230, 196, 46);
+ }
+
+ .high {
+    background: red;
+ }
