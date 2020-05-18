@@ -3,6 +3,7 @@ h1 {
     color: white;
     height: 65px;
     margin-bottom: 0;
+    width: max;
 }
 
 .title{
@@ -26,6 +27,7 @@ h1 {
 
 .forecast-div {
     margin-top: 15px;
+    width: 700px;
  }
 
  .left {
@@ -64,12 +66,50 @@ h1 {
 
  .low {
      background: green;
+     border-radius: 3px;
+     padding: 5px;
  }
 
  .medium {
      background: rgb(230, 196, 46);
+     border-radius: 3px;
+     padding: 5px;
  }
 
  .high {
     background: red;
+    border-radius: 3px;
+    padding: 5px;
+ }
+
+.fit {
+    width: 650px;
+}
+
+ .card-body {
+     padding: 0;
+ }
+
+ .icon {
+     height: 50px;
+     width: 50px;
+ }
+
+ #current-icon {
+    float: left;
+    height: 50px;
+    width: 50px;
+    display: inline;
+    display: inline-block;
+ } 
+
+.date {
+    margin-bottom: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+ }
+
+ .city-date {
+    float: left;
+    margin-top: 10px;
  }

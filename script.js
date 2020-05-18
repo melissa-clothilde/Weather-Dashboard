@@ -2,6 +2,7 @@ $(document).ready(function () {
     var citySearched;
     var queryURLCurrent;
     var queryURLForecast;
+    var forecastDate = $('.date');
     var searchBtn = $('#search-btn');
     var APIKey = "69299ee3f1473733a3c1d646aa060339";
 
@@ -27,6 +28,13 @@ $(document).ready(function () {
     function currentResponse() {
         citySearched = $('.city-date');
         citySearched.empty();
+        currentTemperature = $('.current-temperature');
+        currentTemperature.empty();
+        currentHumidity = $('.current-humidity');
+        currentHumidity.empty;
+        windSpeed = $('.wind-speed');
+        windSpeed.empty();
+
         $.ajax({
             url: queryURLCurrent,
             method: "GET"
@@ -51,20 +59,20 @@ $(document).ready(function () {
             $('.city-date').append(' (' + currentDate + ')');
 
 
-            $('.icon').attr('src', iconURL);
+            $('#current-icon').attr('src', iconURL);
 
             console.log(cityName);
 
             console.log(currentTemperature);
-            $('.current-temperature').append(currentTemperature);
+            $('.current-temperature').append('Temperature: ', currentTemperature, ' \xB0', 'F');
 
 
             console.log(currentHumidity);
-            
-            $('.current-humidity').append(currentHumidity);
+
+            $('.current-humidity').append('Humidity: ', currentHumidity, '%');
 
             console.log(windSpeed);
-            $('.wind-speed').append(windSpeed);
+            $('.wind-speed').append('Wind Speed: ', windSpeed, ' MPH');
 
             // uv index api. color background based on the value. connect with lat and long. take lat and long in currentResponse, save it, then do the ajax call for the UV Index API
 
@@ -105,6 +113,13 @@ $(document).ready(function () {
 
 
     function forecastResponse() {
+        date = $('.date');
+        date.empty();
+        fTemp = $('forecast-temperture');
+        fTemp.empty();
+        fHumidity = $('.forecast-humidity')
+        fHumidity.empty();
+
         $.ajax({
             url: queryURLForecast,
             method: "GET"
@@ -112,49 +127,36 @@ $(document).ready(function () {
 
             .then(function (forecastResponse) {
 
-                // Log the queryURL
-                // console.log('forecastResponse', forecastResponse);
-                var m = moment();
-                console.log("moment", moment());
+                forecastDate.each(function (index) {
+                    var dateStr = forecastResponse.list[index * 8 + 4].dt_txt;
+                    var thisForecast = forecastResponse.list[index * 8 + 4];
+                    dateStr = dateStr.split(' ');
+                    dateStr = dateStr[0].split('-');
+                    dateStr = dateStr[1] + '/' + dateStr[2] + '/' + dateStr[0];
+                    $(this).append(dateStr);
+                    console.log('forecastDate.length', forecastDate.length);
+                        
+                    var icon = $(this).siblings('img');
+                    icon.attr('src', "http://openweathermap.org/img/wn/" + thisForecast.weather[0].icon + "@2x.png");
 
-                var currentDate = m.format('L');
-                console.log('currentDate', currentTime);
+                    var temp = $(this).siblings('p:nth-child(3)');
+                    var thisTemp = thisForecast.main.temp;
+                    temp.append(thisTemp, ' \xB0', 'F');
 
-                var day1 = $('#forecast-date1');
-                var day2 = $('#forecast-date2');
-                var day3 = $('#forecast-date3');
-                var day4 = $('#forecast-date4');
-                var day5 = $('#forecast-date5');
+                    var humidity = $(this).siblings('p:nth-child(4)');
+                    var thisHumidity = thisForecast.main.humidity;
+                    humidity.append('Humidity: ', thisHumidity, '%');
 
-                day1 = currentDate;
-                console.log(day1);
-                $('#forecast-date1').append(day1);
-                // var dateTimeFromForecastResponse = forecastResponse.list[0].dt_txt;
-                // var split = dateTimeFromForecastResponse.split(' ');
-                // console.log('split', split);
-                // var forecastDate = $('.forecast-date');
-                // for (let index = 0; index < forecastDate.length; index++) {
-                //     $(this).append(forecastResponse.list[0].dt_txt);
-                //     console.log('forecastDate.lenth', forecastDate.length);
-                    
-                // }
-
-
-                // for (let index = 0; index < forecastResponse.list.length; index++) {
-                //     if (forecastResponse.list[index].dt_txt === '15:00:00') 
-                //     //extract time from date/time string, use formatter to get th hour, js date object or use moment.js. look up split and join methods to get only 15:00:00 from string
-                //     //add
-
-
-
-                //             //loop through the day-# ids and set condition of i to start at 1 and stop at 5. Write code to change HTML based on objects
-                //         });
-                // }
-
-
+                })
             })
-
-
+    storeCities();
     }
-});
+
+    function storeCities () {
+        
+    }
+
+
+})
+
 
