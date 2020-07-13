@@ -1,9 +1,27 @@
+.hide {
+    display: none;
+}
+
 h1 {
     background: #353936;
     color: white;
     height: 65px;
     margin-bottom: 0;
     width: max;
+}
+
+hr {
+    color: 353936;
+}
+
+ul {
+    background-color: white;
+    padding: 0;
+}
+
+li {
+    border: solid 1px #b9bbb9;
+    padding: 3px;
 }
 
 .title{
