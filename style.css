@@ -135,3 +135,7 @@ li {
  .pad {
      padding-bottom: 6px;
  }
+
+ .forecast-temperature, .forecast-humidity {
+     padding-left: 5px;
+ }

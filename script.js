@@ -163,7 +163,7 @@ $(document).ready(function () {
     function forecastResponse() {
         date = $('.date');
         date.empty();
-        fTemp = $('.forecast-temperture');
+        fTemp = $('.forecast-temperature');
         fTemp.empty();
         fHumidity = $('.forecast-humidity')
         fHumidity.empty();
