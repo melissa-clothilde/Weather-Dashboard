@@ -60,8 +60,6 @@ $(document).ready(function () {
             return;
         }
 
-
-        cities.push(citySearched);
         cityInput.value = "";
 
 
@@ -80,7 +78,7 @@ $(document).ready(function () {
         currentTemperature = $('.current-temperature');
         currentTemperature.empty();
         currentHumidity = $('.current-humidity');
-        currentHumidity.empty;
+        currentHumidity.empty();
         windSpeed = $('.wind-speed');
         windSpeed.empty();
 
@@ -91,9 +89,10 @@ $(document).ready(function () {
             error: function () {
                 // if user puts in an invalid city
                 alert("Invalid city entered.");
+                body.addClass('hide');
             }
         }).then(function (currentResponse) {
-            
+
             // Log the queryURL
 
             var cityName = currentResponse.name;
@@ -102,6 +101,11 @@ $(document).ready(function () {
             var currentTemperature = currentResponse.main.temp;
             var currentHumidity = currentResponse.main.humidity;
             var windSpeed = currentResponse.wind.speed;
+
+            if (cities.includes(cityName) === false) {
+                cities.push(cityName);
+            }
+
             body.removeClass('hide');
             $('.city-date').prepend(cityName);
 
@@ -115,8 +119,6 @@ $(document).ready(function () {
             $('#current-icon').attr('src', iconURL);
 
             $('.current-temperature').append('Temperature: ', currentTemperature, ' \xB0', 'F');
-
-
 
             $('.current-humidity').append('Humidity: ', currentHumidity, '%');
 
@@ -194,7 +196,7 @@ $(document).ready(function () {
                     humidity.append('Humidity: ', thisHumidity, '%');
                 })
             })
-        if ()
+
         storeCities();
         renderCities();
     }

@@ -131,3 +131,7 @@ li {
     float: left;
     margin-top: 10px;
  }
+
+ .pad {
+     padding-bottom: 6px;
+ }
